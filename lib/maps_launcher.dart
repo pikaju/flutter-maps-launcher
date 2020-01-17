@@ -2,6 +2,7 @@ library maps_launcher;
 
 import 'dart:io' show Platform;
 
+import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MapsLauncher {
@@ -9,6 +10,10 @@ class MapsLauncher {
   /// to open a maps application showing the result of a search query.
   /// Returns `null` if the platform is not supported.
   static String createQueryUrl(String query) {
+    if (kIsWeb) {
+      return Uri.encodeFull(
+          'https://www.google.com/maps/search/?api=1&query=$query');
+    }
     if (Platform.isAndroid) {
       return Uri.encodeFull('geo:0,0?q=$query');
     } else if (Platform.isIOS) {
@@ -22,6 +27,10 @@ class MapsLauncher {
   /// Returns `null` if the platform is not supported.
   static String createCoordinatesUrl(double latitude, double longitude,
       [String label]) {
+    if (kIsWeb) {
+      return Uri.encodeFull(
+          'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude');
+    }
     if (Platform.isAndroid) {
       return Uri.encodeFull(
         'geo:0,0?q=$latitude,$longitude' + (label == null ? '' : '($label)'),
@@ -42,7 +51,7 @@ class MapsLauncher {
   /// Returns a Future that resolves to true if the maps application
   /// was launched successfully, false otherwise.
   static Future<bool> launchQuery(String query) {
-    return _launchUrl(createQueryUrl(query));
+    return launch(createQueryUrl(query));
   }
 
   /// Launches the maps application for this platform.
@@ -51,17 +60,6 @@ class MapsLauncher {
   /// was launched successfully, false otherwise.
   static Future<bool> launchCoordinates(double latitude, double longitude,
       [String label]) {
-    return _launchUrl(createCoordinatesUrl(latitude, longitude, label));
-  }
-
-  /// Tries to launch a URL.
-  /// Returns a Future that resolves to true if the URL
-  /// was successfully launched, false otherwise.
-  static Future<bool> _launchUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-      return true;
-    }
-    return false;
+    return launch(createCoordinatesUrl(latitude, longitude, label));
   }
 }
