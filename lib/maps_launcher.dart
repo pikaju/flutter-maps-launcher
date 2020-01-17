@@ -10,16 +10,15 @@ class MapsLauncher {
   /// to open a maps application showing the result of a search query.
   /// Returns `null` if the platform is not supported.
   static String createQueryUrl(String query) {
-    if (kIsWeb) {
-      return Uri.encodeFull(
-          'https://www.google.com/maps/search/?api=1&query=$query');
+    if (!kIsWeb) {
+      if (Platform.isAndroid) {
+        return Uri.encodeFull('geo:0,0?q=$query');
+      } else if (Platform.isIOS) {
+        return Uri.encodeFull('https://maps.apple.com/?q=$query');
+      }
     }
-    if (Platform.isAndroid) {
-      return Uri.encodeFull('geo:0,0?q=$query');
-    } else if (Platform.isIOS) {
-      return Uri.encodeFull('https://maps.apple.com/?q=$query');
-    }
-    return null;
+    return Uri.encodeFull(
+        'https://www.google.com/maps/search/?api=1&query=$query');
   }
 
   /// Returns a URL that can be launched on the current platform
@@ -27,23 +26,22 @@ class MapsLauncher {
   /// Returns `null` if the platform is not supported.
   static String createCoordinatesUrl(double latitude, double longitude,
       [String label]) {
-    if (kIsWeb) {
-      return Uri.encodeFull(
-          'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude');
-    }
-    if (Platform.isAndroid) {
-      return Uri.encodeFull(
-        'geo:0,0?q=$latitude,$longitude' + (label == null ? '' : '($label)'),
-      );
-    } else if (Platform.isIOS) {
-      if (label != null)
+    if (!kIsWeb) {
+      if (Platform.isAndroid) {
         return Uri.encodeFull(
-          'https://maps.apple.com/?q=$label&ll=$latitude,$longitude',
+          'geo:0,0?q=$latitude,$longitude' + (label == null ? '' : '($label)'),
         );
-      else
-        return 'https://maps.apple.com/?sll=$latitude,$longitude';
+      } else if (Platform.isIOS) {
+        if (label != null)
+          return Uri.encodeFull(
+            'https://maps.apple.com/?q=$label&ll=$latitude,$longitude',
+          );
+        else
+          return 'https://maps.apple.com/?sll=$latitude,$longitude';
+      }
     }
-    return null;
+    return Uri.encodeFull(
+        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude');
   }
 
   /// Launches the maps application for this platform.

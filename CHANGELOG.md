@@ -1,3 +1,7 @@
+## 1.2.0
+
+* Add support support for arbitrary platforms (Google Maps)
+
 ## 1.1.0
 
 * Add Flutter Web support (Google Maps)
