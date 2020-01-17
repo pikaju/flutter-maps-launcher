@@ -1,5 +1,5 @@
 name: maps_launcher
-description: Simple Flutter package to open the maps application on iOS and Android.
+description: Simple Flutter package to open the maps application (or browser) on all platforms.
 version: 1.2.0
 homepage: https://github.com/Pikaju/FlutterMapsLauncher
 
