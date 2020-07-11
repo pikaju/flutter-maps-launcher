@@ -10,15 +10,21 @@ class MapsLauncher {
   /// to open a maps application showing the result of a search query.
   /// Returns `null` if the platform is not supported.
   static String createQueryUrl(String query) {
-    if (!kIsWeb) {
-      if (Platform.isAndroid) {
-        return Uri.encodeFull('geo:0,0?q=$query');
-      } else if (Platform.isIOS) {
-        return Uri.encodeFull('https://maps.apple.com/?q=$query');
-      }
+    var uri;
+
+    if (kIsWeb) {
+      uri = Uri.https('www.google.com', '/maps/search',
+        {'api': '1', 'query': query}
+      );
+
+    } else if (Platform.isAndroid) {
+      uri = Uri(scheme: 'geo', host: '0,0', queryParameters: {'q': query});
+
+    } else if (Platform.isIOS) {
+      uri = Uri.https('maps.apple.com', '/', {'q': query});
     }
-    return Uri.encodeFull(
-        'https://www.google.com/maps/search/?api=1&query=$query');
+
+    return uri?.toString();
   }
 
   /// Returns a URL that can be launched on the current platform
@@ -26,22 +32,31 @@ class MapsLauncher {
   /// Returns `null` if the platform is not supported.
   static String createCoordinatesUrl(double latitude, double longitude,
       [String label]) {
-    if (!kIsWeb) {
-      if (Platform.isAndroid) {
-        return Uri.encodeFull(
-          'geo:0,0?q=$latitude,$longitude' + (label == null ? '' : '($label)'),
-        );
-      } else if (Platform.isIOS) {
-        if (label != null)
-          return Uri.encodeFull(
-            'https://maps.apple.com/?q=$label&ll=$latitude,$longitude',
-          );
-        else
-          return 'https://maps.apple.com/?sll=$latitude,$longitude';
-      }
+    var uri;
+
+    if (kIsWeb) {
+      uri = Uri.https('www.google.com', '/maps/search',
+        {'api': '1', 'query': '$latitude,$longitude'}
+      );
+
+    } else if (Platform.isAndroid) {
+      var query = '$latitude,$longitude';
+
+      if (label != null)
+        query += '($label)';
+
+      uri = Uri(scheme: 'geo', host: '0,0', queryParameters: {'q':  query});
+
+    } else if (Platform.isIOS) {
+      var params = {'ll': '$latitude,$longitude'};
+
+      if (label != null)
+          params['q'] = label;
+
+      uri = Uri.https('maps.apple.com', '/', params);
     }
-    return Uri.encodeFull(
-        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude');
+
+    return uri?.toString();
   }
 
   /// Launches the maps application for this platform.
