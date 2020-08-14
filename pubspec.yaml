@@ -1,17 +1,33 @@
 name: maps_launcher
-description: Simple Flutter package to open the maps application (or browser) on all platforms.
-version: 1.2.1
+description: Simple Flutter plugin to open the maps application (or browser) on all platforms.
+version: 1.2.2+1
 homepage: https://github.com/Pikaju/FlutterMapsLauncher
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0 <2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-  url_launcher: ">=5.3.0 <6.0.0"
+  flutter_web_plugins:
+    sdk: flutter
+  url_launcher: ^5.5.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.example.maps_launcher
+        pluginClass: MapsLauncherPlugin
+      ios:
+        pluginClass: MapsLauncherPlugin
+      linux:
+        pluginClass: MapsLauncherPlugin
+      web:
+        pluginClass: MapsLauncherWeb
+        fileName: maps_launcher_web.dart

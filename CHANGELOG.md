@@ -1,3 +1,13 @@
+## 1.2.2+1
+
+* I dun goofed
+
+## 1.2.2
+
+* Support other platforms
+* Fix web support not being recognized by pub
+* Fix formatting for pub points
+
 ## 1.2.1
 
 * Fix bad URL escaping of queries and labels (thank you to [lenlo](https://github.com/lenlo)!)
