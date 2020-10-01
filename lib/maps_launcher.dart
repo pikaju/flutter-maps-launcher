@@ -14,7 +14,7 @@ class MapsLauncher {
 
     if (kIsWeb) {
       uri = Uri.https(
-          'www.google.com', '/maps/search', {'api': '1', 'query': query});
+          'www.google.com', '/maps/search/', {'api': '1', 'query': query});
     } else if (Platform.isAndroid) {
       uri = Uri(scheme: 'geo', host: '0,0', queryParameters: {'q': query});
     } else if (Platform.isIOS) {
@@ -35,7 +35,7 @@ class MapsLauncher {
     var uri;
 
     if (kIsWeb) {
-      uri = Uri.https('www.google.com', '/maps/search',
+      uri = Uri.https('www.google.com', '/maps/search/',
           {'api': '1', 'query': '$latitude,$longitude'});
     } else if (Platform.isAndroid) {
       var query = '$latitude,$longitude';
