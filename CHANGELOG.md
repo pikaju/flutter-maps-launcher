@@ -1,3 +1,7 @@
+## 1.2.2+2
+
+* Fix web support (thank you to [ATeal](https://github.com/ATeal)!)
+
 ## 1.2.2+1
 
 * I dun goofed
