@@ -1,15 +1,18 @@
 name: example
-description: A new Flutter project.
+publish_to: none
+description: >-
+  Simple project that demonstrates how to open maps application
+  (or browser) from widgets
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  
+
   maps_launcher:
     path: ../
 

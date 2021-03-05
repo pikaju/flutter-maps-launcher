@@ -1,4 +1,5 @@
 import 'dart:async';
+
 // In order to *not* need this ignore, consider extracting the "web" version
 // of your plugin as a separate package, instead of inlining it in the same
 // package as the core of your plugin.
@@ -14,7 +15,7 @@ class MapsLauncherWeb {
     final MethodChannel channel = MethodChannel(
       'maps_launcher',
       const StandardMethodCodec(),
-      registrar.messenger,
+      registrar,
     );
 
     final pluginInstance = MapsLauncherWeb();
@@ -28,11 +29,11 @@ class MapsLauncherWeb {
     switch (call.method) {
       case 'getPlatformVersion':
         return getPlatformVersion();
-        break;
       default:
         throw PlatformException(
           code: 'Unimplemented',
-          details: 'maps_launcher for web doesn\'t implement \'${call.method}\'',
+          details:
+              'maps_launcher for web doesn\'t implement \'${call.method}\'',
         );
     }
   }

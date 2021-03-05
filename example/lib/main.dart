@@ -22,13 +22,13 @@ class MyApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => MapsLauncher.launchQuery(
                     '1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA'),
                 child: Text('LAUNCH QUERY'),
               ),
               SizedBox(height: 32),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => MapsLauncher.launchCoordinates(
                     37.4220041, -122.0862462, 'Google Headquarters are here'),
                 child: Text('LAUNCH COORDINATES'),
