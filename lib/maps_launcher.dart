@@ -8,7 +8,6 @@ import 'package:url_launcher/url_launcher.dart';
 class MapsLauncher {
   /// Returns a URL that can be launched on the current platform
   /// to open a maps application showing the result of a search query.
-  /// Returns `null` if the platform is not supported.
   static String createQueryUrl(String query) {
     var uri;
 
@@ -29,7 +28,6 @@ class MapsLauncher {
 
   /// Returns a URL that can be launched on the current platform
   /// to open a maps application showing coordinates ([latitude] and [longitude]).
-  /// Returns `null` if the platform is not supported.
   static String createCoordinatesUrl(double latitude, double longitude,
       [String? label]) {
     var uri;

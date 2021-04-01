@@ -1,3 +1,7 @@
+## 2.0.0
+
+* Add null-safety support (thank you to [orevial](https://github.com/orevial)!)
+
 ## 1.2.2+2
 
 * Fix web support (thank you to [ATeal](https://github.com/ATeal)!)
