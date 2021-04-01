@@ -24,14 +24,14 @@ class MapsLauncher {
           'www.google.com', '/maps/search', {'api': '1', 'query': query});
     }
 
-    return uri?.toString();
+    return uri.toString();
   }
 
   /// Returns a URL that can be launched on the current platform
   /// to open a maps application showing coordinates ([latitude] and [longitude]).
   /// Returns `null` if the platform is not supported.
   static String createCoordinatesUrl(double latitude, double longitude,
-      [String label]) {
+      [String? label]) {
     var uri;
 
     if (kIsWeb) {
@@ -54,7 +54,7 @@ class MapsLauncher {
           {'api': '1', 'query': '$latitude,$longitude'});
     }
 
-    return uri?.toString();
+    return uri.toString();
   }
 
   /// Launches the maps application for this platform.
@@ -70,7 +70,7 @@ class MapsLauncher {
   /// Returns a Future that resolves to true if the maps application
   /// was launched successfully, false otherwise.
   static Future<bool> launchCoordinates(double latitude, double longitude,
-      [String label]) {
+      [String? label]) {
     return launch(createCoordinatesUrl(latitude, longitude, label));
   }
 }
