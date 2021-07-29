@@ -4,6 +4,8 @@
 #include <gtk/gtk.h>
 #include <sys/utsname.h>
 
+#include <cstring>
+
 #define MAPS_LAUNCHER_PLUGIN(obj) \
   (G_TYPE_CHECK_INSTANCE_CAST((obj), maps_launcher_plugin_get_type(), \
                               MapsLauncherPlugin))

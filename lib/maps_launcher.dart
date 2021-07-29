@@ -20,7 +20,7 @@ class MapsLauncher {
       uri = Uri.https('maps.apple.com', '/', {'q': query});
     } else {
       uri = Uri.https(
-          'www.google.com', '/maps/search', {'api': '1', 'query': query});
+          'www.google.com', '/maps/search/', {'api': '1', 'query': query});
     }
 
     return uri.toString();
@@ -48,7 +48,7 @@ class MapsLauncher {
 
       uri = Uri.https('maps.apple.com', '/', params);
     } else {
-      uri = Uri.https('www.google.com', '/maps/search',
+      uri = Uri.https('www.google.com', '/maps/search/',
           {'api': '1', 'query': '$latitude,$longitude'});
     }
 

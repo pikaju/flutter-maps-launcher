@@ -1,3 +1,8 @@
+## 2.0.1
+
+* Fix Google Maps URLs being broken on Windows, MacOS and Linux
+* Fix platform support not being recognized by pub
+
 ## 2.0.0
 
 * Add null-safety support (thank you to [orevial](https://github.com/orevial)!)
