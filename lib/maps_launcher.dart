@@ -42,9 +42,9 @@ class MapsLauncher {
 
       uri = Uri(scheme: 'geo', host: '0,0', queryParameters: {'q': query});
     } else if (Platform.isIOS) {
-      var params = {'ll': '$latitude,$longitude'};
+      var params = {'q': '$latitude,$longitude'};
 
-      if (label != null) params['q'] = label;
+      // if (label != null) params['q'] = label;
 
       uri = Uri.https('maps.apple.com', '/', params);
     } else {
