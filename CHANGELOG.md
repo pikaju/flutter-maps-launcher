@@ -1,3 +1,8 @@
+## 2.1.0
+
+* Switch from `launch` to `launchUrl` introduced in `url_launcher` version `6.1.0`
+* Support Android Gradle plugin 7.3.0 (thank you to [asaarnak](https://github.com/asaarnak)!)
+
 ## 2.0.1
 
 * Fix Google Maps URLs being broken on Windows, MacOS and Linux

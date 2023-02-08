@@ -6,10 +6,10 @@ import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MapsLauncher {
-  /// Returns a URL that can be launched on the current platform
+  /// Returns a [Uri] that can be launched on the current platform
   /// to open a maps application showing the result of a search query.
-  static String createQueryUrl(String query) {
-    var uri;
+  static Uri createQueryUri(String query) {
+    Uri uri;
 
     if (kIsWeb) {
       uri = Uri.https(
@@ -23,14 +23,14 @@ class MapsLauncher {
           'www.google.com', '/maps/search/', {'api': '1', 'query': query});
     }
 
-    return uri.toString();
+    return uri;
   }
 
-  /// Returns a URL that can be launched on the current platform
+  /// Returns a [Uri] that can be launched on the current platform
   /// to open a maps application showing coordinates ([latitude] and [longitude]).
-  static String createCoordinatesUrl(double latitude, double longitude,
+  static Uri createCoordinatesUri(double latitude, double longitude,
       [String? label]) {
-    var uri;
+    Uri uri;
 
     if (kIsWeb) {
       uri = Uri.https('www.google.com', '/maps/search/',
@@ -52,7 +52,7 @@ class MapsLauncher {
           {'api': '1', 'query': '$latitude,$longitude'});
     }
 
-    return uri.toString();
+    return uri;
   }
 
   /// Launches the maps application for this platform.
@@ -60,7 +60,7 @@ class MapsLauncher {
   /// Returns a Future that resolves to true if the maps application
   /// was launched successfully, false otherwise.
   static Future<bool> launchQuery(String query) {
-    return launch(createQueryUrl(query));
+    return launchUrl(createQueryUri(query));
   }
 
   /// Launches the maps application for this platform.
@@ -69,6 +69,6 @@ class MapsLauncher {
   /// was launched successfully, false otherwise.
   static Future<bool> launchCoordinates(double latitude, double longitude,
       [String? label]) {
-    return launch(createCoordinatesUrl(latitude, longitude, label));
+    return launchUrl(createCoordinatesUri(latitude, longitude, label));
   }
 }
