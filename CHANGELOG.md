@@ -2,6 +2,7 @@
 
 * Switch from `launch` to `launchUrl` introduced in `url_launcher` version `6.1.0`
 * Support Android Gradle plugin 7.3.0 (thank you to [asaarnak](https://github.com/asaarnak)!)
+* Add note about SDK version support
 
 ## 2.0.1
 

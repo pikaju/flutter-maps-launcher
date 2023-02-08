@@ -18,3 +18,7 @@ MapsLauncher.launchQuery('1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA')
 
 MapsLauncher.launchCoordinates(37.4220041, -122.0862462);
 ```
+
+## Supported SDK versions
+
+Consult the table provided by the [url_launcher documentation](https://pub.dev/packages/url_launcher) to see which SDK versions [maps_launcher](.) supports.
