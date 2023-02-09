@@ -1,3 +1,7 @@
+## 2.2.0
+
+* Add default label on iOS so that a pin always show up on the map
+
 ## 2.1.0
 
 * Switch from `launch` to `launchUrl` introduced in `url_launcher` version `6.1.0`
