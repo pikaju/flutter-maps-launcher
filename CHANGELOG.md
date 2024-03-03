@@ -1,3 +1,7 @@
+## 2.3.0
+
+* Adds a `namespace` attribute to the Android build.gradle, for compatibility with Android Gradle Plugin 8.0.
+
 ## 2.2.0
 
 * Add default label on iOS so that a pin always show up on the map
