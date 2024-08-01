@@ -56,12 +56,22 @@ class MapsLauncher {
     return uri;
   }
 
+  static Future<LaunchMode> _launchMode() async =>
+      await supportsLaunchMode(LaunchMode.externalNonBrowserApplication)
+          ? LaunchMode.externalNonBrowserApplication
+          : await supportsLaunchMode(LaunchMode.externalApplication)
+              ? LaunchMode.externalApplication
+              : LaunchMode.platformDefault;
+
   /// Launches the maps application for this platform.
   /// The maps application will show the result of the provided search [query].
   /// Returns a Future that resolves to true if the maps application
   /// was launched successfully, false otherwise.
-  static Future<bool> launchQuery(String query) {
-    return launchUrl(createQueryUri(query));
+  static Future<bool> launchQuery(String query) async {
+    return await launchUrl(
+      createQueryUri(query),
+      mode: await _launchMode(),
+    );
   }
 
   /// Launches the maps application for this platform.
@@ -69,7 +79,10 @@ class MapsLauncher {
   /// Returns a Future that resolves to true if the maps application
   /// was launched successfully, false otherwise.
   static Future<bool> launchCoordinates(double latitude, double longitude,
-      [String? label]) {
-    return launchUrl(createCoordinatesUri(latitude, longitude, label));
+      [String? label]) async {
+    return await launchUrl(
+      createCoordinatesUri(latitude, longitude, label),
+      mode: await _launchMode(),
+    );
   }
 }
