@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Maps Launcher Demo',
           ),
         ),
@@ -25,13 +27,13 @@ class MyApp extends StatelessWidget {
               ElevatedButton(
                 onPressed: () => MapsLauncher.launchQuery(
                     '1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA'),
-                child: Text('LAUNCH QUERY'),
+                child: const Text('LAUNCH QUERY'),
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () => MapsLauncher.launchCoordinates(
                     37.4220041, -122.0862462, 'Google Headquarters are here'),
-                child: Text('LAUNCH COORDINATES'),
+                child: const Text('LAUNCH COORDINATES'),
               ),
             ],
           ),
