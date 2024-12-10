@@ -16,7 +16,7 @@ class MapsLauncher {
           'www.google.com', '/maps/search/', {'api': '1', 'query': query});
     } else if (Platform.isAndroid) {
       uri = Uri(scheme: 'geo', host: '0,0', queryParameters: {'q': query});
-    } else if (Platform.isIOS) {
+    } else if (Platform.isIOS || Platform.isMacOS) {
       uri = Uri.https('maps.apple.com', '/', {'q': query});
     } else {
       uri = Uri.https(
