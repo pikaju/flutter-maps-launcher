@@ -41,7 +41,7 @@ class MapsLauncher {
       if (label != null) query += '($label)';
 
       uri = Uri(scheme: 'geo', host: '0,0', queryParameters: {'q': query});
-    } else if (Platform.isIOS) {
+    } else if (Platform.isIOS || Platform.isMacOS) {
       var params = {
         'll': '$latitude,$longitude',
         'q': label ?? '$latitude, $longitude',
