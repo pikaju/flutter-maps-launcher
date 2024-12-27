@@ -61,7 +61,8 @@ class MapsLauncher {
   /// Returns a Future that resolves to true if the maps application
   /// was launched successfully, false otherwise.
   static Future<bool> launchQuery(String query) {
-    return launchUrl(createQueryUri(query));
+    return launchUrl(createQueryUri(query),
+        mode: LaunchMode.externalApplication);
   }
 
   /// Launches the maps application for this platform.
@@ -70,6 +71,7 @@ class MapsLauncher {
   /// was launched successfully, false otherwise.
   static Future<bool> launchCoordinates(double latitude, double longitude,
       [String? label]) {
-    return launchUrl(createCoordinatesUri(latitude, longitude, label));
+    return launchUrl(createCoordinatesUri(latitude, longitude, label),
+        mode: LaunchMode.externalApplication);
   }
 }
