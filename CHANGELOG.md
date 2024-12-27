@@ -1,6 +1,7 @@
 ## 3.0.0
 
 - Use `web` package instead of `dart:html` to support WASM
+- Update Gradle, Kotlin and other dependencies
 - Fix Gradle namespace
 - Fix use of `LaunchMode` on iOS causing errors
 - Fix bug that prevented Waze from opening properly
