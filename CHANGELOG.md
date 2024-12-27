@@ -1,3 +1,7 @@
+## 3.0.0+1
+
+- Loosen `web` package versioning constraint
+
 ## 3.0.0
 
 - Use `web` package instead of `dart:html` to support WASM
