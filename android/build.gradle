@@ -28,7 +28,7 @@ android {
     if (project.android.hasProperty("namespace")) {
         namespace "com.example.maps_launcher"
     }
-    compileSdkVersion 33
+    compileSdkVersion flutter.compileSdkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -44,7 +44,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion flutter.minSdkVersion
     }
 }
 
