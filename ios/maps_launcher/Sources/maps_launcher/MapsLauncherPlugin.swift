@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class SwiftMapsLauncherPlugin: NSObject, FlutterPlugin {
+public class MapsLauncherPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "maps_launcher", binaryMessenger: registrar.messenger())
-    let instance = SwiftMapsLauncherPlugin()
+    let instance = MapsLauncherPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
