@@ -5,3 +5,7 @@
 .pub/
 
 build/
+
+# Swift Package Manager
+.build/
+.swiftpm/

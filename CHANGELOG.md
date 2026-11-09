@@ -1,3 +1,9 @@
+## Unreleased
+
+- Add Swift Package Manager support for iOS and macOS (CocoaPods is still supported)
+- Raise minimum deployment targets to iOS 15.0 and macOS 12.0, matching current Flutter
+- Add privacy manifests for iOS and macOS
+
 ## 3.0.0+1
 
 - Loosen `web` package versioning constraint
